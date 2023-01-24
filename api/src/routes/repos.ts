@@ -22,10 +22,13 @@ repos.get('/', async (_: Request, res: Response) => {
           .toString()
       );
       apiData = response.data;
-      //Merging and filtering internal and retrived data
+      //Merging, filtering, and sorting the internal and retrived data
       const mergedData = apiData
         .concat(localData)
-        .filter((repo: Repo) => repo.fork === false);
+        .filter((repo: Repo) => repo.fork === false)
+        .sort((a, b) => {
+          return new Date(b.created_at) > new Date(a.created_at) ? 1 : -1;
+        });
       // res.setHeader('Content-Type', 'application/json');
       res.set('Content-Type', 'application/json');
       res.json(mergedData);
