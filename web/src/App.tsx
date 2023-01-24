@@ -4,6 +4,7 @@ import { Repo } from '../../api/src/models/Repo';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import RepoList from './components/RepoList';
+import FilterLang from './components/FilterLang';
 
 export function App() {
   const [repoData, setRepoData] = useState<Repo[]>([]);
@@ -29,6 +30,12 @@ export function App() {
 
   return (
     <div className="App" style={{ display: 'flex', flexDirection: 'column' }}>
+      <FilterLang
+        repoData={repoData}
+        filteredRepo={filteredRepo}
+        setFilteredRepo={setFilteredRepo}
+        setRepoData={setRepoData}
+      />
       <RepoList
         repoData={repoData}
         setRepoData={setRepoData}
