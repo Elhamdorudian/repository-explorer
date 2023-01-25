@@ -8,3 +8,7 @@ interface Auth {
 export function getRepos(url: string, auth: Auth) {
   return axios.get(url, { auth });
 }
+
+export function getReadMe(url: string) {
+  return axios.get(url);
+}
