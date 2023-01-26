@@ -15,8 +15,6 @@ export default function RepoDetails(props: Irepo) {
   const handleHomepage = () => {
     navigate('/');
   };
-
-  console.log(filteredRepo);
   return (
     <div>
       <div style={{ margin: '1rem' }}>

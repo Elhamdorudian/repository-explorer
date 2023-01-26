@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { IProps } from '../assets/models/IProps';
 import { Button, Stack } from '@mui/material';
+import { Repo } from '../../../api/src/models/Repo';
 
-export default function FilterLang(props: IProps) {
+export interface LangProp {
+  repoData: Repo[];
+  setFilteredRepo: React.Dispatch<React.SetStateAction<Repo[]>>;
+}
+
+export default function FilterLang(props: LangProp) {
   const [language, setLanguage] = useState<string>('');
   const languages = ['PHP', 'TypeScript', 'French', 'English'];
-  const { repoData, filteredRepo, setFilteredRepo } = props;
+  const { repoData, setFilteredRepo } = props;
   const handleLanguage = (
     e:
       | React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -26,8 +31,6 @@ export default function FilterLang(props: IProps) {
         )
       );
     }
-
-    console.log(filteredRepo);
   };
   return (
     <>

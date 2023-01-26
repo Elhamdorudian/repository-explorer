@@ -1,5 +1,5 @@
 import { Repo } from '../../../api/src/models/Repo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MarkdownView from 'react-showdown';
 import { getReadMe } from '../api/repos';
 
@@ -13,18 +13,43 @@ interface Irepo {
 export default function MarkdownContent(props: Irepo) {
   const { filteredRepo, repoId } = props;
   const [readMe, setReadMe] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const selectedRepo = filteredRepo.find(
-    (repo) => repo.id.toString() === repoId
-  );
+  useEffect(() => {
+    const selectedRepo = filteredRepo.find(
+      (repo) => repo.id.toString() === repoId
+    );
 
-  const readMeApi = `https://raw.githubusercontent.com/${selectedRepo?.full_name}/master/README.md`;
-  if (selectedRepo) {
+    if (!selectedRepo) {
+      return;
+    }
+    setIsLoading(true);
+    const readMeApi = `https://raw.githubusercontent.com/${selectedRepo?.full_name}/master/README.md`;
     getReadMe(readMeApi)
-      .then((res: any) => setReadMe(res.data))
-      .catch((err: any) => console.log(err));
+      .then((res: any) => {
+        setReadMe(res.data);
+        setIsLoading(false);
+      })
+      .catch((err: any) => {
+        setError(err.message);
+        setIsLoading(false);
+      });
+  }, [filteredRepo, repoId]);
+
+  if (error) {
+    return <p>this repo does not have a README</p>;
   }
   return (
-    <MarkdownView markdown={readMe} options={{ tables: true, emoji: true }} />
+    <>
+      {isLoading ? (
+        <p>the page is Loading</p>
+      ) : (
+        <MarkdownView
+          markdown={readMe}
+          options={{ tables: true, emoji: true }}
+        />
+      )}
+    </>
   );
 }

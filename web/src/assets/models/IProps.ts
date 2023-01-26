@@ -6,3 +6,8 @@ export interface IProps {
   filteredRepo: Repo[];
   setFilteredRepo: React.Dispatch<React.SetStateAction<Repo[]>>;
 }
+
+export interface ILang {
+  repoData: Repo[];
+  setFilteredRepo: React.Dispatch<React.SetStateAction<Repo[]>>;
+}
