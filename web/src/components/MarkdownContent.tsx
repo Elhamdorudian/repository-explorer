@@ -4,20 +4,20 @@ import MarkdownView from 'react-showdown';
 import { getReadMe } from '../api/repos';
 
 interface Irepo {
-  filteredRepo: Repo[];
+  newRepoUrls: Repo[];
 
   //----------------------------------------------------------------UPDATE---------------------------------------------------------------//
   repoId: string | undefined;
 }
 
 export default function MarkdownContent(props: Irepo) {
-  const { filteredRepo, repoId } = props;
+  const { newRepoUrls, repoId } = props;
   const [readMe, setReadMe] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const selectedRepo = filteredRepo.find(
+    const selectedRepo = newRepoUrls.find(
       (repo) => repo.id.toString() === repoId
     );
 
@@ -35,7 +35,7 @@ export default function MarkdownContent(props: Irepo) {
         setError(err.message);
         setIsLoading(false);
       });
-  }, [filteredRepo, repoId]);
+  }, [newRepoUrls, repoId]);
 
   if (error) {
     return <p>this repo does not have a README</p>;

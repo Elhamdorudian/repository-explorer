@@ -12,3 +12,7 @@ export function getRepos(url: string, auth: Auth) {
 export function getReadMe(url: string) {
   return axios.get(url);
 }
+
+export function getCommitUrl(url: string) {
+  return axios.get(url);
+}

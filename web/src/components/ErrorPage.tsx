@@ -11,10 +11,8 @@ export default function ErrorPage() {
     >
       <div>
         <h2>ERROR</h2>
-      </div>
-      <div>
-        <h1 style={{ fontSize: '4rem' }}>404</h1>
-        <h2>Please Try Again</h2>
+        <h1 style={{ fontSize: '4rem' }}>500</h1>
+        <h2>Server is not responding...Please Try Again</h2>
       </div>
     </div>
   );

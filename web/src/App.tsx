@@ -9,7 +9,6 @@ import FilterLang from './components/FilterLang';
 import RepoDetails from './components/RepoDetails';
 import ErrorPage from './components/ErrorPage';
 import IsLoading from './components/IsLoading';
-// import FadeLoader from 'react-spinners/ClipLoader';
 
 export function App() {
   const [repoData, setRepoData] = useState<Repo[]>([]);
@@ -39,6 +38,7 @@ export function App() {
         setIsLoading(false);
       });
   }, []);
+  console.log(filteredRepo);
 
   if (error) {
     return (
