@@ -2,6 +2,8 @@ import { Repo } from '../../../api/src/models/Repo';
 import { useState, useEffect } from 'react';
 import MarkdownView from 'react-showdown';
 import { getReadMe } from '../api/repos';
+import { Alert } from '@mui/material';
+import IsLoading from './IsLoading';
 
 interface Irepo {
   newRepoUrls: Repo[];
@@ -20,7 +22,6 @@ export default function MarkdownContent(props: Irepo) {
     const selectedRepo = newRepoUrls.find(
       (repo) => repo.id.toString() === repoId
     );
-
     if (!selectedRepo) {
       return;
     }
@@ -38,12 +39,16 @@ export default function MarkdownContent(props: Irepo) {
   }, [newRepoUrls, repoId]);
 
   if (error) {
-    return <p>this repo does not have a README</p>;
+    return (
+      <Alert severity="warning">
+        Sry! The repo details does not contain a README!
+      </Alert>
+    );
   }
   return (
     <>
       {isLoading ? (
-        <p>the page is Loading</p>
+        <IsLoading />
       ) : (
         <MarkdownView
           markdown={readMe}

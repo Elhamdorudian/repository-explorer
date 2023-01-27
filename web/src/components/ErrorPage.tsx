@@ -1,19 +1,24 @@
+import { Alert, AlertTitle, Box, Typography } from '@mui/material';
+
 export default function ErrorPage() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '10%',
-        textAlign: 'center',
-      }}
-    >
-      <div>
-        <h2>ERROR</h2>
-        <h1 style={{ fontSize: '4rem' }}>500</h1>
-        <h2>Server is not responding...Please Try Again</h2>
-      </div>
+    <div>
+      <Box
+        padding={5}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginTop: '15%',
+        }}
+      >
+        <Alert severity="error" sx={{ maxWidth: '600px', padding: '2rem' }}>
+          <AlertTitle sx={{ fontSize: '1.5rem' }}>Error 500</AlertTitle>
+          <Typography sx={{ fontSize: '1.2rem' }}>
+            Server is not responding — <strong>Please Try Again!</strong>
+          </Typography>
+        </Alert>
+      </Box>
     </div>
   );
 }

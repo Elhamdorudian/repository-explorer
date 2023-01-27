@@ -2,11 +2,11 @@ import { Repo } from '../../../api/src/models/Repo';
 import { useState, useEffect } from 'react';
 import { getCommitUrl } from '../api/repos';
 import { Commit } from '../../../api/src/models/Commit';
-import { Typography } from '@mui/material';
+import { Alert, Typography } from '@mui/material';
+import IsLoading from './IsLoading';
 
 interface Irepo {
   newRepoUrls: Repo[];
-  //----------------------------------------------------------------UPDATE---------------------------------------------------------------//
   repoId: string | undefined;
 }
 
@@ -52,16 +52,17 @@ export default function CommitDetails(props: Irepo) {
         setIsLoading(false);
       });
   }, [newRepoUrls, repoId]);
-
-  //   console.log('commit data:');
-  //   console.log('noth:', commitUrl);
   if (error) {
-    return <p>this repo does not have commit details</p>;
+    return (
+      <Alert severity="warning">
+        Sry! The repo does not contain any message, Author, or date details!
+      </Alert>
+    );
   }
   return (
     <>
       {isLoading ? (
-        <p>the page is Loading</p>
+        <IsLoading />
       ) : (
         <>
           <Typography>

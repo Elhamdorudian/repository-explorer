@@ -1,18 +1,13 @@
 import FadeLoader from 'react-spinners/ClipLoader';
+import '../assets/styles/IsLoading.css';
 
 export default function IsLoading() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '20%',
-      }}
-    >
+    <div className="is-loading">
       <FadeLoader
-        color="green"
+        color="gray"
         loading={true}
-        size={100}
+        size={80}
         aria-label="Loading Spinner"
         data-testid="loader"
       />

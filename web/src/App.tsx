@@ -38,8 +38,6 @@ export function App() {
         setIsLoading(false);
       });
   }, []);
-  console.log(filteredRepo);
-
   if (error) {
     return (
       <>

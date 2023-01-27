@@ -1,0 +1,15 @@
+.item-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+  }
+  .detail-btn{
+    justify-self: end !important;
+    padding-top: 1rem;
+    align-self: flex-end;
+  }
+  .detail-link{
+    text-decoration: none!important;
+    font-weight: bold;
+    color: #fff;
+  }

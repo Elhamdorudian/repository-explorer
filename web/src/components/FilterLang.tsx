@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Stack } from '@mui/material';
 import { Repo } from '../../../api/src/models/Repo';
+import '../assets/styles/FilterLang.css';
 
 export interface LangProp {
   repoData: Repo[];
@@ -34,32 +35,45 @@ export default function FilterLang(props: LangProp) {
   };
   return (
     <>
+      <h1 className="list-header">List of Repos</h1>
+
       <form onSubmit={handleLanguage}>
         <Stack
+          className="stack-class"
           direction="row"
-          spacing={1}
-          padding="2px"
-          sx={{ margin: 'auto' }}
+          sx={{ justifyContent: 'center', marginTop: '1rem' }}
         >
           {languages.map((lang) => (
             <Button
               key={lang}
               variant="contained"
               type="submit"
+              color="info"
+              size="large"
               value={lang.toLocaleLowerCase()}
               name={lang.toLocaleLowerCase()}
               onClick={(e) => setLanguage(e.currentTarget.value)}
+              sx={{
+                marginRight: '1rem',
+                marginTop: '0.5rem',
+                fontWeight: 'bold',
+              }}
             >
               {lang}
             </Button>
           ))}
           <Button
             size="large"
+            color="warning"
             variant="contained"
             type="submit"
             name="all"
             value="all"
             onClick={(e) => setLanguage('')}
+            sx={{
+              marginRight: '1rem',
+              marginTop: '0.5rem',
+            }}
           >
             Show all repos
           </Button>

@@ -1,0 +1,9 @@
+
+@media (max-width: 600px) {
+  .stack-class {
+    flex-direction: column !important;
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+  }
+}

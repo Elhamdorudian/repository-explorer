@@ -1,5 +1,11 @@
 .repo-list-wrapper{
-    background-color: #f6e3c1;
     width: 100% !important;
     margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.list-header{
+text-align: center;
+padding: 2rem;
+color: rgb(61, 59, 59);
 }

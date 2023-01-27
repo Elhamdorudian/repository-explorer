@@ -1,0 +1,11 @@
+.details-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center !important;
+    height:100%;
+}
+
+.inside-wrapper{
+    margin: 1rem;
+}

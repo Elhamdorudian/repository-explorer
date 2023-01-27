@@ -10,7 +10,6 @@ const repoList: React.FC<IProps> = ({
 }) => {
   return (
     <div className="repo-list-wrapper">
-      <h1 style={{ marginLeft: '20px' }}>List of Repos</h1>
       <RepoItem
         repoData={repoData}
         setRepoData={setRepoData}
