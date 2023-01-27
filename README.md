@@ -1,3 +1,33 @@
+# Repository List with filter and details
+The solution includes a Node/Express API that aggregates GitHub repository data from two sources, an internal source of data and a React application that displays a list of repositories in reverse chronological order, with the ability to filter by language and view more details and README about each repository.
+
+# Features
+* ESLint coding standards
+* Language filter button
+* Repository detail Pages
+* Grid system responsive design
+
+# Getting Started
+To get started with this project, follow these steps:
+
+* Clone the repository to your local machine using git clone https://github.com/Elhamdorudian/repository-explorer.git.
+
+## Backend:
+> `1` Navigate to the project _backend_ directory using cd api.
+> `2` Install the dependencies using _yarn install_.
+> `3` The _port_ number is 4000
+> `4` Start the development server using yarn start.
+
+## Frontend:
+> `1` Navigate to the project _frontend_ directory using cd web.
+> `2` Install the dependencies using _yarn install_.
+> `3` Start the development server using yarn start.
+
+
+# Built With
+* React
+* Node
+
 silverorange Intermediate Developer Assessment
 ==============================================
 

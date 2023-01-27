@@ -8,6 +8,13 @@ export const repos = Router();
 let localData: Repo[];
 let apiData: Repo[];
 
+//-------------------------------------------------------NOTICE-------------------------------------------------------//
+
+//-----For improved performance, it's better to store API data in a database and access it instead of constantly
+// fetching new data from the API.//
+
+//-------------------------------------------------------NOTICE-------------------------------------------------------//
+
 repos.get('/', async (_: Request, res: Response) => {
   res.header('Cache-Control', 'no-store');
 
@@ -35,7 +42,4 @@ repos.get('/', async (_: Request, res: Response) => {
       res.status(200);
     })
     .catch((err) => res.status(500).json({ message: err.message }));
-
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-  // res.json(datas);
 });
